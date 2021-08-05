@@ -1,0 +1,66 @@
+const Produto = require('../models/Produto');
+//importa biblioteca para redimensionar imagens
+const sharp = require('sharp');
+//importa biblioteca para resolver o pathing
+const path = require('path');
+//importa biblioteca do file system
+const fs = require('fs');
+
+
+module.exports = {
+
+    //busca todos os produtos
+     async index(req, res) {
+        const produtos = await Produto.find();
+        return res.json(produtos);
+    },
+
+    //salva um produto e sua imagem
+    async salvar(req, res) {
+        const { nome, vendedor, preco, quantidade, categorias } = req.body;
+        const { filename: image } = req.file;
+
+        console.log(req.file);
+
+        //separa o nome da imagem da extencao
+        const [name] = image.split('.');
+        const fileName = name + '.jpg';
+
+        //redimensiona e salva a imagem recebida
+        await sharp(req.file.path).resize(500).jpeg({quality:70}).toFile(
+            path.resolve(req.file.destination, 'resized', fileName)
+        );
+
+        //deleta a imagem com tamanho original
+        //fs.unlinkSync(req.file.path);
+
+        const produto = await Produto.create({
+            nome, vendedor, preco, quantidade, categorias, imagem: fileName
+        });
+
+        //if(req.io)req.io.emit('post', post);
+
+        res.json(produto);
+    },
+
+    //adiciona produto ao estoque
+     async adicionarEstoque(req, res) {
+        const produtos = await Produto.findById(req.params.id);
+        const { quantidade } = req.body;
+        produtos.quantidade += quantidade;
+        await produtos.save();
+        return res.json(produtos);
+    },
+
+    async filtrarPorCategoria(req, res) {
+        const { categorias } = req.body;
+        const produtos = await Produto.find({ categorias: { $all: categorias } });
+        return res.json(produtos);
+    },
+
+    async filtrarPorLanchonete(req, res) {
+        const { lanchonete } = req.body;
+        const produtos = await Produto.find({ 'vendedor.nome_lanchonete': lanchonete });
+        return res.json(produtos);
+    },
+}

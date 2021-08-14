@@ -17,10 +17,22 @@ module.exports = {
 
     //salva um produto e sua imagem
     async salvar(req, res) {
-        const { nome, vendedor, preco, quantidade, categorias } = req.body;
+
+        const { nome, vendedor_nome_lanchonete, vendedor_endereco, vendedor_contato, 
+            preco, quantidade, categorias } = req.body;
+
         const { filename: image } = req.file;
 
-        console.log(req.file);
+        const vendedor = {
+            nome_lanchonete: vendedor_nome_lanchonete,
+            endereco: vendedor_endereco,
+            contato: vendedor_contato,
+        };
+
+        //transforma string de categorias em array
+        const categoriasArr = categorias.split(' ');
+
+        //console.log(req.file);
 
         //separa o nome da imagem da extencao
         const [name] = image.split('.');
@@ -35,7 +47,7 @@ module.exports = {
         //fs.unlinkSync(req.file.path);
 
         const produto = await Produto.create({
-            nome, vendedor, preco, quantidade, categorias, imagem: fileName
+            nome, vendedor, preco, quantidade, categorias: categoriasArr, imagem: fileName
         });
 
         //if(req.io)req.io.emit('post', post);
@@ -47,7 +59,7 @@ module.exports = {
      async adicionarEstoque(req, res) {
         const produtos = await Produto.findById(req.params.id);
         const { quantidade } = req.body;
-        produtos.quantidade += quantidade;
+        produtos.quantidade += Number(quantidade);
         await produtos.save();
         return res.json(produtos);
     },
@@ -62,5 +74,10 @@ module.exports = {
         const { lanchonete } = req.body;
         const produtos = await Produto.find({ 'vendedor.nome_lanchonete': lanchonete });
         return res.json(produtos);
+    },
+
+    async deletar(req, res) {
+        const produto = await Produto.findByIdAndDelete(req.params.id);
+        return res.json(produto);
     },
 }

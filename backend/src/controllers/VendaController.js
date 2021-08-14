@@ -4,12 +4,14 @@ module.exports = {
 
     //busca todas as vendas
     async index(req, res) {
-        const vendas = await Venda.find().populate('produtos.produto');
+        //recupera as vendas e popula o campo cliente com seus nomes
+        const vendas = await Venda.find().populate('cliente','nome');
         return res.json(vendas);
     },
 
     //salva uma venda
     async store(req, res) {
+        console.log(req.body);
         const { 
             produtos, 
             cliente, 

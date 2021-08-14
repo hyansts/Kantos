@@ -3,14 +3,14 @@ const mongoose = require('mongoose');
 //Cria schema da tabela do banco no mongoose
 const VendaSchema = new mongoose.Schema({
     produtos: [{
-        produto: { type: mongoose.Schema.Types.ObjectId, ref: 'Produto' },
+        produto: mongoose.Schema.Types.ObjectId,
         quantidade: Number,
     }],
-    cliente: mongoose.Schema.Types.ObjectId,
+    cliente: { type: mongoose.Schema.Types.ObjectId, ref: 'Usuario' },
     precoTotal: Number,
     pedido_status: {type: String, default: 'Em processamento'},
     forma_de_pagamento: String,
-    troco: String,
+    troco: Number,
     endereco_de_entrega: String,
     horario_de_entrega: { type: Date, default: Date.now },
     para_entrega: {type: Boolean, default: false},

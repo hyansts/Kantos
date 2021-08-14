@@ -20,10 +20,11 @@ const upload = multer(uploadConfig);
 
 // CRUD dos produtos
 routes.get('/produtos', ProdutoController.index);
-routes.get('/produtos/categorias', ProdutoController.filtrarPorCategoria);
-routes.get('/produtos/lanchonetes', ProdutoController.filtrarPorLanchonete);
+routes.post('/produtos/categorias', ProdutoController.filtrarPorCategoria);
+routes.post('/produtos/lanchonetes', ProdutoController.filtrarPorLanchonete);
 routes.post('/produtos', upload.single('image'), ProdutoController.salvar);
-routes.post('/produtos/:id/estoque', upload.single('image'), ProdutoController.adicionarEstoque);
+routes.post('/produtos/:id/estoque', ProdutoController.adicionarEstoque);
+routes.delete('/produtos/:id/deletar', ProdutoController.deletar);
 
 // CRUD dos usuarios
 routes.get('/usuario/:id/perfil', UsuarioController.index);

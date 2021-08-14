@@ -1,0 +1,10 @@
+section#post-list article footer .comments-container {
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+section#post-list article footer .comments-container .comments{
+    border: 1px solid #ddd;
+    margin: 0 auto;
+    padding: 8px;
+}

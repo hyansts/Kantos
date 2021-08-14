@@ -22,7 +22,7 @@ const io = require('socket.io')(server, {
 
 
 //conecta com o banco - usuario: hyan / senha: eQbKOftPSNdy5U03
-mongoose.connect('mongodb+srv://hyan:eQbKOftPSNdy5U03@cluster0.70ti5.mongodb.net/test?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://hyan:eQbKOftPSNdy5U03@cluster0.70ti5.mongodb.net/kantos?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -38,6 +38,8 @@ app.use(cors());
 app.use('/files', express.static(path.resolve(__dirname,'..','uploads', 'resized')));
 
 app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(express.json());
 
 app.use(require('./routes'));
 

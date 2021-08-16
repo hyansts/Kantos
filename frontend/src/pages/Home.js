@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 //import './Feed.css';
 import '../services/api';
-import './css/bootstrap.min.css';
 import './css/styles.css';
 
 import pici from '../assets/img/pici.jpg';
@@ -24,20 +23,14 @@ class Home extends Component {
     };
 
     async componentDidMount(){
-        const response = await api.get('posts');
+        const response = await api.get('lanchonete');
         this.setState({feed: response.data});
-    }
-
-
-    handleLike = id => {
-         api.post('/posts/'+id+"/like")
     }
 
     render(){
         return (
             <main>
                 <div className="container-fluid">
-
                     <div id="mainSlider" className="carousel slide" data-ride="carousel">
                         <ol className="carousel-indicators">
                             <li data-target="#mainSlider" data-slide-to="0" className="active"></li>
@@ -61,36 +54,47 @@ class Home extends Component {
                                 <div className="col-12">
                                     <h2 className="main-title">Lanchonetes-Campus do Pici</h2>
                                 </div>
+                                
+                                {
+                                    this.state.feed.map(lc => (
 
-                                <div className="col-md-3 project-box a">
+                                <div className="col-md-3 project-box a" key={lc._id}> 
                                     <div className="card">
-                                        <img src={geologia2} className="img-thumbnail"  alt="SMD" />
+                                        <img src={"http://localhost:3333/files/" + lc.imagem} className="img-thumbnail"  alt="Lanchonete" />
                                         <p></p>
                                         <div className="card-body">
-                                            <h5 className="card-title" id="titulocartao">SMD</h5>
+                                            <h5 className="card-title" id="titulocartao">{lc.nome_lanchonete}</h5>
 
                                             <table className="table table-striped" >
                                                 <thead>
                                                     <tr>
-                                                        <th>Salgados</th>
+                                                        <th>{lc.endereco}</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td>Horário de Funcionamento <br/> 08:00 - 20:00</td>
+                                                        <td>Horário de Funcionamento: <br/> {lc.horario}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Bloco 80 a 500m</td>
+                                                        <td>Contato: {lc.contato}</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
 
-                                            <button type="button" className="btn btn-success">
-                                                <a className="text-white" href="lanchonete_a.html"><h5>entrar</h5></a>
-                                            </button>
+                                            <Link to={{
+                                                pathname: '/lanchonete',
+                                                    state: {
+                                                        lanchonete: lc.nome_lanchonete
+                                                    }
+                                                }}>
+                                                <button type="button" className="btn btn-success">
+                                                    <h5 className="text-white">Cardápio</h5>
+                                                </button>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
+                                ))}      
                             </div>
                         </div>
                     </div>

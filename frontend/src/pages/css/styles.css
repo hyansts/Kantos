@@ -728,5 +728,8 @@ header, .navbar {
   
 }
 
+ #login-img{
+   max-width: 16px;
+ }
 
 }

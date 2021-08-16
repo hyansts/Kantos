@@ -21,7 +21,7 @@ const upload = multer(uploadConfig);
 // CRUD dos produtos
 routes.get('/produtos', ProdutoController.index);
 routes.post('/produtos/categorias', ProdutoController.filtrarPorCategoria);
-routes.post('/produtos/lanchonetes', ProdutoController.filtrarPorLanchonete);
+routes.get('/produtos/:id/lanchonete', ProdutoController.filtrarPorLanchonete);
 routes.post('/produtos', upload.single('image'), ProdutoController.salvar);
 routes.post('/produtos/:id/estoque', ProdutoController.adicionarEstoque);
 routes.delete('/produtos/:id/deletar', ProdutoController.deletar);
@@ -33,8 +33,9 @@ routes.post('/usuario', UsuarioController.store);
 
 // CRUD dos gerentes de lanchonetes
 routes.get('/lanchonete/:id/perfil', GerenteLanchoneteController.index);
+routes.get('/lanchonete', GerenteLanchoneteController.getLanchonetes);
 routes.put('/lanchonete/:id/editar', GerenteLanchoneteController.edit);
-routes.post('/lanchonete', GerenteLanchoneteController.store);
+routes.post('/lanchonete', upload.single('image'), GerenteLanchoneteController.store);
 
 // CRUD das vendas
 routes.get('/vendas', VendaController.index);

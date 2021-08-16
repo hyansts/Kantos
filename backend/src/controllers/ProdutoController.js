@@ -8,7 +8,7 @@ const fs = require('fs');
 
 
 module.exports = {
-
+    
     //busca todos os produtos
      async index(req, res) {
         const produtos = await Produto.find();
@@ -71,8 +71,7 @@ module.exports = {
     },
 
     async filtrarPorLanchonete(req, res) {
-        const { lanchonete } = req.body;
-        const produtos = await Produto.find({ 'vendedor.nome_lanchonete': lanchonete });
+        const produtos = await Produto.find({ 'vendedor.nome_lanchonete': req.params.id });
         return res.json(produtos);
     },
 

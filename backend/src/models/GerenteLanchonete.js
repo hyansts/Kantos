@@ -8,6 +8,8 @@ const GerenteLanchoneteSchema = new mongoose.Schema({
     nome_lanchonete: { type: String, unique: true },
     endereco: String,
     contato: String,
+    horario: String,
+    imagem: String,
 },
 
 {

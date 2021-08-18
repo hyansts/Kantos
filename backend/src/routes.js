@@ -30,6 +30,7 @@ routes.delete('/produtos/:id/deletar', ProdutoController.deletar);
 routes.get('/usuario/:id/perfil', UsuarioController.index);
 routes.put('/usuario/:id/editar', UsuarioController.edit);
 routes.post('/usuario', UsuarioController.store);
+routes.post('/usuario/login', UsuarioController.login);
 
 // CRUD dos gerentes de lanchonetes
 routes.get('/lanchonete/:id/perfil', GerenteLanchoneteController.index);

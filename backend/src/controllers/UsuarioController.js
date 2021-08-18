@@ -8,6 +8,22 @@ module.exports = {
         return res.json(usuario);
     },
 
+    //autentica login
+    async login(req, res) {
+        const { email, senha } = req.body;
+        const usuario = await Usuario.findOne({email, senha});
+        if (usuario && usuario.email === email && usuario.senha === senha) 
+        {
+            const userInfo = {
+                nome: usuario.nome,
+                email: usuario.email,
+                id: usuario._id
+            }
+            return res.json(userInfo);
+        }
+        else return res.json(false);
+    },
+
     //salva um usuario comum
     async store(req, res) {
         const { nome, email, senha } = req.body;

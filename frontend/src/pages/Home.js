@@ -5,7 +5,6 @@ import '../services/api';
 import './css/styles.css';
 
 import pici from '../assets/img/pici.jpg';
-import geologia2 from '../assets/img/geologia2.jpg';
 
 import io from 'socket.io-client';
 

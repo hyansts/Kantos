@@ -1,21 +1,40 @@
 /* Gerais */
 body {
   font-family: 'Roboto', sans-serif;
+
 }
 
 #logincorpo{
-  background-color: #5BE88F;
-  color: #fff;
+  background-color: #fff;
+  color: #000;
+  
+
+
 
 }
 
+
+
 #login{
-  margin-bottom: 2%;
+  margin-top: -1%;
+  margin-bottom: 5%;
+  color: #000;
+}
+
+#formulario{
+    margin-top: -5%;
+    margin-bottom: -10%;
+  }
+
+#cadastro{
+  margin-top: 10%;
 }
 
 #logintexto{
   color: #000;
+
 }
+
 
 #cadastro{
   width: 100%;
@@ -45,13 +64,16 @@ p, li {
   font-size: 14px;
 }
 
+
+
 /* Barra de navegação */
+/*  #89C39B */
 header, .navbar {
-  background-color: #fff;
+  background-color: #f9f4cf;
 }
 
 #corbtncelular{
-  background-color: #5BE88F;
+  background-color: #f9f4cf;
 }
 
 #nav-container {
@@ -62,8 +84,6 @@ header, .navbar {
 #logo {
   width: 60px;
 }
-
-
 
 #cortitulologo{
   color: #000;
@@ -89,6 +109,8 @@ header, .navbar {
 .nav-item.active {
   border-bottom: 3px solid #000;
 }
+
+
 
 /* Slider */
 
@@ -139,6 +161,8 @@ header, .navbar {
   background-color: #65DAF9;
 }
 
+
+
 /* Lanchonetes */
 
 #lanchonetes-area {
@@ -147,12 +171,44 @@ header, .navbar {
   margin-bottom: 10%;
 }
 
+
+.fotos {
+  height: 200px;
+  width: auto;
+  max-width: 100%;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  object-fit: cover;
+}
+
+
+
+.rounded-circle{
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+}
+
 .card-body {
   text-align: center;
   
-  
-
 }
+
+.card {
+  text-align: center;
+  border: 5px solid #c8c5 !important;
+  border-color: #c8c5;
+  border-top-left-radius:30px !important;
+  border-top-right-radius:30px !important;
+  border-bottom-left-radius:30px !important;
+  border-bottom-right-radius:30px !important;
+  width: 100%;
+  
+}
+
+
 
 #corbtncartao{
   background-color: #E08C0D;
@@ -161,11 +217,36 @@ header, .navbar {
   font-size: 20px;
 }
 
+
 /* Portfólio */
+
+#cardapio-area {
+  background-color: #F9F9F9;
+  margin-top: -15%;
+  margin-bottom: 1%;
+}
+
+#carrinho{
+  
+  margin-bottom: -5%;
+  margin-top: -3%;
+
+  
+
+}
+
 
 .project-box {
   margin-bottom: 70px;
   margin-top: -3%;
+  
+
+}
+
+
+
+#espacocolapso{
+  margin-bottom: -100px;
 }
 
 #corcolapso{
@@ -180,8 +261,11 @@ header, .navbar {
   color: #000;
 }
 
-#cortitulocarrinho{
-  background-color: #FFCB45;
+
+#alturatextocarrinho{
+  
+  background-color: #000;
+
 }
 
 
@@ -190,7 +274,7 @@ header, .navbar {
   text-align: center;
 }
 
-#portfolio-area .filter-btn {
+#lanchonete-area .filter-btn {
   color: #444;
   border: 1px solid #444;
   background-color: transparent;
@@ -209,7 +293,154 @@ header, .navbar {
   background-color: #65DAF9;
 }
 
-/* Trabalhe conosco */
+
+.wrapper{
+  max-height: 500px;
+  border: 1px solid #ddd;
+  display: flex;
+  
+}
+
+
+#pefil-area{
+  margin-top: 50px;
+}
+.wrapper:webkit-scrollbar{
+  width: 0;
+}
+
+.wrapper .item{
+  min-width: 200px;
+  
+  height: 500px;
+  line-height: 110px;
+  text-align: auto;
+  background-color: #ddd;
+  margin-right: 2px;
+}
+
+
+
+/* Footer */
+
+#contactkantos-area {
+  text-align: center;
+  background-color: #0A91A7;
+  height: 250px;
+  margin-top: -10%;
+
+}
+
+
+
+#contactkantos2-area {
+  text-align: center;
+  background-color: #0A91A7;
+  height: 250px;
+  margin-top: -12%;
+
+}
+
+#contactlanchonete-area {
+  text-align: center;
+  background-color: #5BE88F;
+  height: 250px;
+  margin-top: 5%;
+  width: 100%;
+
+}
+
+.iconescontatos{
+  color: #fff;
+}
+
+
+
+.contact-box {
+  padding-bottom: 50px;
+}
+
+.contact-box i {
+  color: #000;
+  border: solid 1px #444;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  line-height: 55px;
+  font-size: 24px;
+  margin-top: -10%;
+  margin-bottom: 10%;
+}
+
+.contact-box p {
+  font-size: 16px;
+}
+
+.contact-tile {
+  font-weight: bold;
+  color: #000;
+}
+
+#msg-box p {
+  font-size: 22px;
+}
+
+#contact-form input[type="text"], #contact-form textarea {
+  margin-bottom: 15px;
+  border-radius: 0;
+}
+
+#contact-form .main-btn {
+  width: 120px;
+  height: 50px;
+}
+
+#contact-form .main-btn:hover {
+  color: #3EC1D5;
+}
+
+/* Barra final do site */
+
+#copy-area {
+  background-color: #f9f4cf;
+  width: 100%;
+  margin-bottom: -20%;
+}
+
+
+
+#copy-area-lanchonete {
+ 
+  width: 100%;
+  height: 10%;
+  margin-top: -5%;
+  margin-bottom: -1000px;
+}
+
+#copy-area .container {
+  padding: 10px 0;
+  text-align: center;
+}
+
+#copy-area .container p {
+  margin-bottom: 2%;
+  margin-top: 2%;
+}
+
+#copy-area .container a {
+  font-weight: bold;
+  color: #444;
+}
+
+#copy-area .container a:hover {
+  text-decoration: none;
+  color: #3EC1D5;
+}
+
+
+
+
+/* Nao usado Trabalhe conosco */
 
 #apply-area {
   height: 500px;
@@ -433,89 +664,15 @@ header, .navbar {
   letter-spacing: 2px;
 }
 
-/* Footer */
-/* Footer */
-
-#contactkantos-area {
-  text-align: center;
-  background-color: #5BE88F;
-  height: 250px;
-  margin-top: -25%;
-
-}
 
 
-.contact-box {
-  padding-bottom: 50px;
 
-}
 
-.contact-box i {
-  color: #000;
-  border: solid 1px #444;
-  border-radius: 50%;
-  width: 55px;
-  height: 55px;
-  line-height: 55px;
-  font-size: 24px;
-  margin-top: -10%;
-  margin-bottom: 10%;
-}
 
-.contact-box p {
-  font-size: 16px;
-}
 
-.contact-tile {
-  font-weight: bold;
-  color: #000;
-}
 
-#msg-box p {
-  font-size: 22px;
-}
+/* RESPONSIVO */
 
-#contact-form input[type="text"], #contact-form textarea {
-  margin-bottom: 15px;
-  border-radius: 0;
-}
-
-#contact-form .main-btn {
-  width: 120px;
-  height: 50px;
-}
-
-#contact-form .main-btn:hover {
-  color: #3EC1D5;
-}
-
-/* Copy */
-
-#copy-area {
-  background-color: #F1F1F1;
-}
-
-#copy-area .container {
-  padding: 10px 0;
-  text-align: center;
-}
-
-#copy-area .container p {
-  margin-bottom: 2%;
-  margin-top: 2%;
-}
-
-#copy-area .container a {
-  font-weight: bold;
-  color: #444;
-}
-
-#copy-area .container a:hover {
-  text-decoration: none;
-  color: #3EC1D5;
-}
-
-/* responsive */
 @media(max-width: 768px) {
   
   /* geral */
@@ -640,15 +797,48 @@ header, .navbar {
     width: 50%;
   }
 
+  #lanchonetes-area{
+    width: 100%;
+  }
+
   #lanchonetes-area .col-md-3 {
     /* Tamanho da imagem whidt */
     width: 100%;
     margin-bottom: 40px;
   }
 
+  .wrapper{
+    max-height: 120px;
+    border: 1px solid #ddd;
+    display: flex;
+    overflow-x: auto;
+    
+  }
+
+  .wrapper:webkit-scrollbar{
+    width: 0;
+  }
+
+  .wrapper .item{
+    min-width: 500px;
+    height: 110px;
+    
+    line-height: 110px;
+    text-align: center;
+    background-color: #ddd;
+    margin-right: -50px;
+    
+
+    
+  }
+
+  .card{
+    margin-bottom: 10%;
+  }
 
   .card-body {
     font-size: 18px;
+    width: 100%;
 
   }
 
@@ -656,6 +846,22 @@ header, .navbar {
     font-size: 30px;
     
   }
+
+  #cardapio-area{
+    width: 100%;
+    height: 100%;
+    margin-top: -108%;
+  }
+
+   #carrinho{
+
+    margin-top: -1%;
+    margin-bottom: 100%;
+    width: 100%;
+
+  }
+
+  
 
   /* apply */
   #apply-area {
@@ -667,13 +873,36 @@ header, .navbar {
   }
 
   /* filter */
+
+ 
   #portfolio-area .filter-btn {
     margin-bottom: 20px;
   }
 
   /* Caixa dos lanches */
   .project-box {
-    width: 50%;
+    width: 100%;
+    height: 100%
+
+  }
+
+  #team-area{
+    overflow-x: scroll;
+    white-space: normal;
+    display: inline-table;
+    width: 100%;
+    height: 590px;
+    
+  }
+
+  
+  #alturacartao{
+    margin-bottom: -10%;
+    overflow-y: auto;
+  }
+
+  #espacocartao{
+    margin-bottom: -10%;
   }
 
   /* news */
@@ -700,8 +929,14 @@ header, .navbar {
   }
 
   #contactkantos-area{
-    margin-top: -25%;
-    height: 100%;
+    margin-top: -10%;
+    height: 50%;
+
+  }
+
+  #contactkantos2-area{
+    margin-top: -12%;
+    height: 50%;
 
   }
   /* contact */
@@ -717,9 +952,33 @@ header, .navbar {
     margin-bottom: 32%;
   }
 
-  #login{
-    margin-bottom: 10px;
+  #formulario{
+    margin-top: 5%;
+    margin-bottom: 1%;
   }
+
+  #login{
+    margin-top: 15px;
+    margin-bottom: 55px;
+
+  }
+
+  #logincarrinho{
+    margin-top: -10px;
+    margin-bottom: 1px;
+
+  }
+
+  #perfil-area{
+    margin-top: 10%;
+  }
+
+  #copy-area{
+    background-color: #f9f4cf;
+  }
+
+
+
 
   #cadastroajustes{
   margin-bottom: -18%;

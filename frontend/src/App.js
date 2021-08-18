@@ -2,13 +2,15 @@ import React from 'react';
 import {BrowserRouter} from 'react-router-dom';
 import Header from './components/Header';
 import Routes from './routes';
-
+import LoginProvider from './components/Provider';
 
 function App() {
   return (
     <BrowserRouter>
-      <Header />
-      <Routes />
+      <LoginProvider>
+        <Header />
+        <Routes />
+      </LoginProvider>
     </BrowserRouter>
   );
 }

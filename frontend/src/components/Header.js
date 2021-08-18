@@ -12,19 +12,19 @@ function Header() {
   return (
   <header id="main-header">
       <Navbar collapseOnSelect expand="lg" bg="light" fixed="top">
-          <Navbar.Brand href="#home" className="mx-3">
+          <Navbar.Brand href="/" className="mx-3">
               <img id="logo" src={logo} alt="Kantos"/>
                 KANTOS
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
             <Nav>
-            <Nav.Link href="#Home" id="home-menu">Início</Nav.Link>
-              <Nav.Link href="#Mapa">Mapa</Nav.Link>
-              <Nav.Link href="#Login">
-              <img src={login} id="login-img" alt="Login" />
-                Login
-                </Nav.Link>
+              <Nav.Link href="/" id="home-menu">Início</Nav.Link>
+              <Nav.Link href="Mapa">Mapa</Nav.Link>
+              <Nav.Link href="login">
+                <img src={login} id="login-img" alt="Login" />
+                  Login
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
       </Navbar>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Header from '../components/Header';
 //import './Feed.css';
 import '../services/api';
 import './css/styles.css';
@@ -28,6 +29,8 @@ class Home extends Component {
 
     render(){
         return (
+            <>
+            <Header />
             <main>
                 <div className="container-fluid">
                     <div id="mainSlider" className="carousel slide" data-ride="carousel">
@@ -59,7 +62,7 @@ class Home extends Component {
 
                                 <div className="col-md-3 project-box a" key={lc._id}> 
                                     <div className="card">
-                                        <img src={"http://localhost:3333/files/" + lc.imagem} className="img-thumbnail"  alt="Lanchonete" />
+                                        <img src={"http://localhost:3333/files/" + lc.imagem} className="fotos"  alt="Lanchonete" />
                                         <p></p>
                                         <div className="card-body">
                                             <h5 className="card-title" id="titulocartao">{lc.nome_lanchonete}</h5>
@@ -99,6 +102,7 @@ class Home extends Component {
                     </div>
                 </div>
             </main>
+            </>
         );
     }
 }

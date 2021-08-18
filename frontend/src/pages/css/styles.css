@@ -14,7 +14,6 @@ body {
 }
 
 
-
 #login{
   margin-top: -1%;
   margin-bottom: 5%;
@@ -53,6 +52,14 @@ body {
 
 .row {
   margin: 0;
+}
+
+.carrinho {
+  position: fixed; 
+  bottom: 0em; 
+  right: 0em;
+  width: 8em;
+  height: 8em;
 }
 
 .container {
@@ -664,12 +671,19 @@ header, .navbar {
   letter-spacing: 2px;
 }
 
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
 
-
-
-
-
-
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
 
 /* RESPONSIVO */
 
@@ -990,5 +1004,6 @@ header, .navbar {
  #login-img{
    max-width: 16px;
  }
+
 
 }

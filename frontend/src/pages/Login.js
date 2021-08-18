@@ -1,14 +1,13 @@
 import React, { Component, useContext } from 'react';
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import LoginContext from '../components/Context';
+import Header from '../components/Header';
 
 import '../services/api';
 
 import './css/styles.css';
-import pici from '../assets/img/banner1.png';
 
 import api from '../services/api';//comunica com o backend
-
 
 class Login extends Component {
     state = {
@@ -31,7 +30,6 @@ class Login extends Component {
         const {setToken} = this.context;
         if(login.data){
             setToken(login.data.id);
-            console.log(login.data);
             this.props.history.push('/');
         }
         
@@ -45,6 +43,8 @@ class Login extends Component {
 
     render(){
         return (
+            <>
+            <Header />
             <main>
                 <div id="login">
                     <h3 className="text-center text-white pt-5">Login form</h3>
@@ -66,11 +66,22 @@ class Login extends Component {
                                             onChange={this.handleChange} value={this.state.senha}
                                             />
                                         </div>
-                                        <div className="form-group">
-                                            <button type="submit" className="btn btn-info btn-md my-2">
-                                                Entrar
-                                            </button>
-                                            <a href="/" className="mx-4" >Cadastro</a>
+
+                                        <h3 className="pt-3"></h3>
+
+                                        <div className="row">
+                                            <div className="col-md-6">
+                                                <div className="form-group">
+                                                    <div id="register-link" className="text-center">
+                                                            <a href="/" id="logintexto" className="btn">Cadastre-se</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="col-md-6 row justify-content-center">
+                                                <button type="submit" className="btn btn-success col-md-6">
+                                                    <h6 className="text-white">Confirmar</h6>
+                                                </button>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>
@@ -79,6 +90,7 @@ class Login extends Component {
                     </div>
                 </div>
             </main>
+            </>
         );
     }
 }

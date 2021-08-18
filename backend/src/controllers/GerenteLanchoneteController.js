@@ -51,7 +51,7 @@ module.exports = {
         const gerente = await GerenteLanchonete.findById(req.params.id);
 
         const { nome, email, senha, nome_lanchonete, 
-            endereco, contato, horario } = req.body;
+            endereco, contato, horario, imagem } = req.body;
 
         if (nome) gerente.nome = nome;
         if (email) gerente.email = email;
@@ -60,6 +60,7 @@ module.exports = {
         if (endereco) gerente.endereco = endereco;
         if (contato) gerente.contato = contato;
         if (horario) gerente.horario = horario;
+        if (imagem) gerente.imagem = imagem;
         await gerente.save();
 
         //if(req.io)req.io.emit('comment', post);

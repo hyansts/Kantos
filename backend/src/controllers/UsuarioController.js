@@ -27,14 +27,21 @@ module.exports = {
     //salva um usuario comum
     async store(req, res) {
         const { nome, email, senha } = req.body;
+        let userInfo = null;
+        try{
+            const usuario = await Usuario.create({
+                nome, email, senha
+            });
 
-        const usuario = await Usuario.create({
-            nome, email, senha
-        });
-
-        //if(req.io)req.io.emit('comment', post);
-
-        return res.json(usuario);
+            const userInfo = {
+                nome: usuario.nome,
+                email: usuario.email,
+                id: usuario._id
+            }
+        }  catch (e) {
+            return res.json(false);
+        }   
+        return res.json(userInfo);
     },
 
     //edita um usuario comum

@@ -6,6 +6,7 @@ import '../services/api';
 import './css/styles.css';
 
 import pici from '../assets/img/pici.jpg';
+import banner from '../assets/img/logo192.png';
 
 import io from 'socket.io-client';
 
@@ -41,11 +42,7 @@ class Home extends Component {
                         </ol>
                         <div className="carousel-inner">
                             <div className="carousel-item active">
-                                <img src={pici} className="d-block w-100" alt="Projetos de e-commerce" />
-                                <div className="carousel-caption d-md-block">
-                                    <h2>Seu Pedido de lanche na UFC, do seu jeito, na hora certa, em qualquer lugar do Campus do Pici!</h2>                        
-                                    <p>V</p>   
-                                </div>
+                                <img src={banner} className="d-block w-100" alt="Projetos de e-commerce" />
                             </div>
                         </div>        
                     </div>

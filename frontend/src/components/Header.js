@@ -22,7 +22,7 @@ class Header extends Component {
     async componentDidMount(){
       const token = this.state.token;
       if (token) {
-        const usuario = await api.get('/usuario/' + token + '/perfil');
+        let usuario = await api.get('/usuario/' + token + '/perfil');
         this.setState({ usuario: usuario.data });
         this.setState({ logged: true })
       }

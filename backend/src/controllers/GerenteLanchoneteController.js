@@ -1,4 +1,5 @@
 const GerenteLanchonete = require('../models/GerenteLanchonete');
+const Usuario = require('../models/Usuario');
 //importa biblioteca para redimensionar imagens
 const sharp = require('sharp');
 //importa biblioteca para resolver o pathing
@@ -24,7 +25,7 @@ module.exports = {
     //salva um usuario gerente
     async store(req, res) {
         const { nome, email, senha, nome_lanchonete, endereco, contato, horario } = req.body;
-
+        const tipo = 'gerente';
         const { filename: image } = req.file;
 
         //separa o nome da imagem da extencao
@@ -36,14 +37,29 @@ module.exports = {
             path.resolve(req.file.destination, 'resized', fileName)
         );
 
-        const gerente = await GerenteLanchonete.create({
-            nome, email, senha, nome_lanchonete, endereco, 
-            contato, horario, imagem: fileName
-        });
+        let userInfo = null;
+        try {
+            const gerente = await GerenteLanchonete.create({
+                nome, email, senha, nome_lanchonete, endereco, 
+                contato, horario, imagem: fileName
+            });
 
-        //if(req.io)req.io.emit('comment', post);
+            const usuario = await Usuario.create({
+                nome, email, senha, tipo
+            });
+        
+            userInfo = {
+                nome: gerente.nome,
+                email: gerente.email,
+                nome_lanchonete: gerente.nome_lanchonete,
+                tipo: tipo,
+                id: usuario._id
+            }
+        } catch (e) {
 
-        return res.json(gerente);
+            return res.json(false);
+        }
+        return res.json(userInfo);
     },
 
     //edita um usuario gerente

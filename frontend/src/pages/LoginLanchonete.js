@@ -9,7 +9,7 @@ import './css/styles.css';
 
 import api from '../services/api';//comunica com o backend
 
-class Login extends Component {
+class LoginLanchonete extends Component {
     state = {
         email: '',
         senha: '',
@@ -53,12 +53,12 @@ class Login extends Component {
                             <div id="login-column" className="col-md-6">
                                 <div id="login-box" className="col-md-12">
                                     <form id="login-form" className="form" onSubmit={this.handleSubmit}>
-                                        <h3 className="text-center text-primary" >Entrar</h3>
+                                        <h3 className="text-center text-success">Acessar Minha Lanchonete</h3>
                                         <div className="form-group mt-3">
                                             <label htmlFor="email" >E-mail:</label><br/>
                                             <input type="text" name="email" className="form-control"
                                             onChange={this.handleChange} value={this.state.email}
-                                            placeholder='seu email'
+                                            placeholder='seu e-mail'
                                             />
                                         </div>
                                         <div className="form-group mt-3">
@@ -73,24 +73,17 @@ class Login extends Component {
                                         <h3 className="pt-3"></h3>
 
                                         <div className="row">
-                                            <div className="col-md-6">
+                                                <div className="col-md-6 mb-3">
                                                 <div className="form-group">
                                                     <div id="register-link" className="text-center">
-                                                        <a href="/cadastro" className="btn">Cadastre-se</a>
+                                                        <a href="/cadastroLanchonete" className="btn text-primary">Cadastrar minha lanchonete</a>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="col-md-6 row justify-content-center">
+                                            <div className="col-md-6 row justify-content-center mb-3">
                                                 <button type="submit" className="btn btn-success col-md-6">
                                                     <h6 className="text-white">Confirmar</h6>
                                                 </button>
-                                            </div>
-                                            <div className="col-md-12 mt-5">
-                                                <div className="form-group">
-                                                    <div className="text-center">
-                                                        <a href="/cadastroLanchonete" className="btn text-primary">Dono de uma lanchonete?</a>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                     </form>
@@ -105,4 +98,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default LoginLanchonete;

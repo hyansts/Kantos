@@ -4,7 +4,7 @@ module.exports = {
 
     //busca um usuario por id
     async index(req, res) {
-        const usuario = await Usuario.findById(req.params.id);
+        const usuario = await Usuario.findById(req.params.id, '-senha');
         return res.json(usuario);
     },
 
@@ -17,6 +17,7 @@ module.exports = {
             const userInfo = {
                 nome: usuario.nome,
                 email: usuario.email,
+                tipo: usuario?.tipo,
                 id: usuario._id
             }
             return res.json(userInfo);
@@ -33,11 +34,13 @@ module.exports = {
                 nome, email, senha
             });
 
-            const userInfo = {
+            userInfo = {
                 nome: usuario.nome,
                 email: usuario.email,
+                tipo: usuario?.tipo,
                 id: usuario._id
             }
+
         }  catch (e) {
             return res.json(false);
         }   

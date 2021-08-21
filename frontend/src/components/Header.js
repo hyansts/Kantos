@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Navbar, Container, Nav} from 'react-bootstrap';
+import {Navbar, NavDropdown, Nav} from 'react-bootstrap';
 import LoginContext from './Context';
 
 import './Header.css';
@@ -39,9 +39,19 @@ class Header extends Component {
     const logged = this.state.logged;
     let logBtn;
     let perfil;
+    let menuLanchonete;
     if(logged) { 
       logBtn = <Nav.Link key="loggedIn" href="/" onClick={this.handleLogOut}>Sair</Nav.Link>;
       perfil = <Nav.Link key="perfilNome" href="/">{this.state.usuario.nome}</Nav.Link>;
+      if(this.state.usuario?.tipo === 'gerente') {
+        menuLanchonete = 
+        <NavDropdown title="Minha Lanchonete" id="collasible-nav-dropdown">
+          <NavDropdown.Item href="/">Gerenciar pedidos</NavDropdown.Item>
+          <NavDropdown.Item href="/">Meu estoque</NavDropdown.Item>
+          <NavDropdown.Item href="produto">Cadastrar produto</NavDropdown.Item>
+          <NavDropdown.Item href="/">Relatório de vendas</NavDropdown.Item>
+        </NavDropdown>
+      }
     } else {
       logBtn = <Nav.Link key="loggedOut" href="login">Login</Nav.Link>
     }
@@ -59,6 +69,7 @@ class Header extends Component {
                   <Nav.Link href="/" id="home-menu">Início</Nav.Link>
                   <Nav.Link href="mapa">Mapa</Nav.Link>
                   {perfil}
+                  {menuLanchonete}
                   {logBtn}
                 </Nav>
               </Navbar.Collapse>

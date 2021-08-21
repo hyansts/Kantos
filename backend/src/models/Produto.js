@@ -7,6 +7,7 @@ const ProdutoSchema = new mongoose.Schema({
         nome_lanchonete: String,
         endereco: String,
         contato: String,
+        horario: String,
     },
     preco: {type: Number, min: 0},
     quantidade: { type: Number, min: 0 },

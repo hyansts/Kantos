@@ -9,6 +9,7 @@ import Lanchonete from './pages/Lanchonete';
 import Cadastro from './pages/Cadastro';
 import LoginLanchonete from './pages/LoginLanchonete';
 import CadastroLanchonete from './pages/CadastroLanchonete';
+import CadastroProduto from './pages/CadastroProduto';
 import Comments from './pages/Comments';
 import RoutesPrivate from './components/Routes/Private/Private';
 
@@ -21,6 +22,7 @@ function Routes() {
             <Route path="/cadastro" component={Cadastro} />
             <Route path="/loginLanchonete" component={LoginLanchonete} />
             <Route path="/cadastroLanchonete" component={CadastroLanchonete} />
+            <RoutesPrivate path="/produto" component={CadastroProduto} />
         </Switch>
     );
 }

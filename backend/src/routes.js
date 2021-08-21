@@ -35,6 +35,7 @@ routes.post('/usuario/login', UsuarioController.login);
 // CRUD dos gerentes de lanchonetes
 routes.get('/lanchonete/:id/perfil', GerenteLanchoneteController.index);
 routes.get('/lanchonete', GerenteLanchoneteController.getLanchonetes);
+routes.get('/lanchonete/:id/info', GerenteLanchoneteController.getLanchonete);
 routes.put('/lanchonete/:id/editar', GerenteLanchoneteController.edit);
 routes.post('/lanchonete', upload.single('image'), GerenteLanchoneteController.store);
 

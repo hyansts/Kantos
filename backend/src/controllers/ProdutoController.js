@@ -19,7 +19,7 @@ module.exports = {
     async salvar(req, res) {
 
         const { nome, vendedor_nome_lanchonete, vendedor_endereco, vendedor_contato, 
-            preco, quantidade, categorias } = req.body;
+            vendedor_horario, preco, quantidade, categorias } = req.body;
 
         const { filename: image } = req.file;
 
@@ -27,12 +27,11 @@ module.exports = {
             nome_lanchonete: vendedor_nome_lanchonete,
             endereco: vendedor_endereco,
             contato: vendedor_contato,
+            horario: vendedor_horario,
         };
 
         //transforma string de categorias em array
         const categoriasArr = categorias.split(' ');
-
-        //console.log(req.file);
 
         //separa o nome da imagem da extencao
         const [name] = image.split('.');

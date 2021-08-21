@@ -22,6 +22,13 @@ module.exports = {
         return res.json(gerente);
     },
 
+    //busca info de uma lanchonete
+    async getLanchonete(req, res) {
+        const lanchonete = await GerenteLanchonete.findOne({email: req.params.id},
+            "nome_lanchonete endereco contato horario");
+        return res.json(lanchonete);
+    },
+
     //salva um usuario gerente
     async store(req, res) {
         const { nome, email, senha, nome_lanchonete, endereco, contato, horario } = req.body;

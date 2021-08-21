@@ -58,7 +58,7 @@ class Login extends Component {
                                             <label htmlFor="email" >E-mail:</label><br/>
                                             <input type="text" name="email" className="form-control"
                                             onChange={this.handleChange} value={this.state.email}
-                                            placeholder='seu email'
+                                            placeholder='email@exemplo.com'
                                             />
                                         </div>
                                         <div className="form-group mt-3">

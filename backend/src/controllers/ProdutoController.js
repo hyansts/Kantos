@@ -54,11 +54,11 @@ module.exports = {
         res.json(produto);
     },
 
-    //adiciona produto ao estoque
-     async adicionarEstoque(req, res) {
+    //editar produto ao estoque
+     async editarEstoque(req, res) {
         const produtos = await Produto.findById(req.params.id);
         const { quantidade } = req.body;
-        produtos.quantidade += Number(quantidade);
+        produtos.quantidade = Number(quantidade);
         await produtos.save();
         return res.json(produtos);
     },

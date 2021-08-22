@@ -23,7 +23,7 @@ routes.get('/produtos', ProdutoController.index);
 routes.post('/produtos/categorias', ProdutoController.filtrarPorCategoria);
 routes.get('/produtos/:id/lanchonete', ProdutoController.filtrarPorLanchonete);
 routes.post('/produtos', upload.single('image'), ProdutoController.salvar);
-routes.post('/produtos/:id/estoque', ProdutoController.adicionarEstoque);
+routes.put('/produtos/:id/estoque', ProdutoController.editarEstoque);
 routes.delete('/produtos/:id/deletar', ProdutoController.deletar);
 
 // CRUD dos usuarios

@@ -131,9 +131,6 @@ header, .navbar {
   padding: 0;
 }
 
-#mainSlider .carousel-inner, #mainSlider .carousel-item {
-  height: 90vh;
-}
 
 #mainSlider .carousel-caption {
   top: 30%;
@@ -196,6 +193,16 @@ header, .navbar {
   object-fit: cover;
 }
 
+.fotos-mini {
+  height: 40px;
+  width: auto;
+  max-width: 60px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  object-fit: cover;
+}
 
 
 .rounded-circle{

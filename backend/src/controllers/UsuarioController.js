@@ -51,15 +51,12 @@ module.exports = {
     async edit(req, res) {
         const usuario = await Usuario.findById(req.params.id);
 
-        const { nome, email, senha } = req.body;
+        const {nome, senha} = req.body;
 
         if(nome) usuario.nome = nome;
-        if(email) usuario.email = email;
         if(senha) usuario.senha = senha;
 
         await usuario.save();
-
-        //if(req.io)req.io.emit('comment', post);
 
         return res.json(usuario);
     }

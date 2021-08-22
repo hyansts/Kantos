@@ -9,13 +9,14 @@ import './css/styles.css';
 
 import api from '../services/api';//comunica com o backend
 
-class Cadastro extends Component {
+class Perfil extends Component {
     state = {
         email: '',
         senha: '',
         confirmarSenha: '',
         nome: '',
         erro: '',
+        token: this.context.token
     };
 
     static contextType = LoginContext;
@@ -26,18 +27,18 @@ class Cadastro extends Component {
 
     handleSubmit = async e => {
         e.preventDefault();
-        if(this.verificarSenha() === ''){
+        if(this.verificarSenha() === '') {
             const data = new URLSearchParams();
-            data.append('email', this.state.email);
             data.append('senha', this.state.senha);
             data.append('nome', this.state.nome);
-            const login = await api.post('/usuario', data);
-            const {setToken} = this.context;
-            if(login.data){
-                setToken(login.data.id);
+            const usuario = await api.put('/usuario/'+this.state.token+'/editar', data);
+            const { setToken } = this.context;
+            if(usuario.data){
+                setToken(null);
                 this.props.history.push('/');
-            } else { this.setState({ erro: 'Os dados são inválidos ou esse usuário já existe' }) }
-        } else this.setState({ erro: 'Senha inválida' });
+            } else { this.setState({ erro: 'Os dados são inválidos' }) }
+        }
+        else this.setState({ erro: 'Senha inválida'});
     }
 
     verificarSenha = () => {
@@ -49,11 +50,10 @@ class Cadastro extends Component {
        else return 'A senha está errada';
     }
 
-    // async componentDidMount(){
-    //     const id = this.props.location.state.lanchonete;
-    //     const response = await api.get('produtos/'+id+'/lanchonete');
-    //     this.setState({feed: response.data});
-    // }
+    async componentDidMount(){
+        const response = await api.get('/usuario/'+this.state.token+'/perfil');
+        this.setState({email:response.data.email, nome:response.data.nome});
+    }
 
     render(){
         return (
@@ -66,19 +66,27 @@ class Cadastro extends Component {
                             <div id="login-column" className="col-md-6">
                                 <div id="login-box" className="col-md-12">
                                     <form id="login-form" className="form" onSubmit={this.handleSubmit}>
-                                        <h3 className="text-center" >Cadastro de Usuário</h3>
+                                        <h3 className="text-center" >Alterar informações de usuário</h3>
                                         <div className="form-group">
                                             <label htmlFor="email">E-mail:</label><br/>
                                             <input type="text" name="email" className="form-control"
                                             placeholder="email@exemplo.com"
-                                            onChange={this.handleChange} value={this.state.email}
+                                            value={this.state.email} readOnly 
                                             />
                                         </div>
                                         <div className="form-group mt-3">
-                                            <label htmlFor="password">Senha:</label><br/>
+                                            <label htmlFor="nome">Nome:</label><br />
+                                            <input type="text" name="nome" className="form-control"
+                                                placeholder="Nome completo"
+                                                onChange={this.handleChange} value={this.state.nome}
+                                            />
+                                        </div>
+                                        <div className="form-group mt-3">
+                                            <label htmlFor="password">Nova Senha:</label><br/>
                                             <input type="password" name="senha" className="form-control"
                                             minLength="6" placeholder="Mínino de 6 caracteres"
                                             onChange={this.handleChange} value={this.state.senha}
+                                            required
                                             />
                                         </div>
                                         <div className="form-group mt-3">
@@ -86,15 +94,9 @@ class Cadastro extends Component {
                                             <input type="password" name="confirmarSenha" className="form-control"
                                             minLength="6" placeholder="Confirme sua senha"
                                             onChange={this.handleChange} value={this.state.confirmarSenha}
+                                            required
                                             />
                                             <span className="text-danger">{this.state.confirmarSenha.length > 5 && this.verificarSenha()}</span>
-                                        </div>
-                                        <div className="form-group mt-3">
-                                            <label htmlFor="nome">Nome:</label><br/>
-                                            <input type="text" name="nome" className="form-control"
-                                            placeholder="Nome completo"
-                                            onChange={this.handleChange} value={this.state.nome}
-                                            />
                                         </div>
 
                                         <h3 className="pt-3"></h3>
@@ -118,4 +120,4 @@ class Cadastro extends Component {
     }
 }
 
-export default Cadastro;
+export default withRouter(Perfil);

@@ -53,7 +53,7 @@ class CadastroLanchonete extends Component {
                 setToken(login.data.id);
                 this.props.history.push('/');
             } else {this.setState({erro: 'Os dados são inválidos ou esse usuário já existe'})}
-        }
+        } else this.setState({ erro: 'Senha inválida' });
     }
 
     verificarSenha = () => {

@@ -10,7 +10,8 @@ import Cadastro from './pages/Cadastro';
 import LoginLanchonete from './pages/LoginLanchonete';
 import CadastroLanchonete from './pages/CadastroLanchonete';
 import CadastroProduto from './pages/CadastroProduto';
-import Comments from './pages/Comments';
+import Perfil from './pages/Perfil';
+import Estoque from './pages/Estoque';
 import RoutesPrivate from './components/Routes/Private/Private';
 
 function Routes() {
@@ -23,6 +24,8 @@ function Routes() {
             <Route path="/loginLanchonete" component={LoginLanchonete} />
             <Route path="/cadastroLanchonete" component={CadastroLanchonete} />
             <RoutesPrivate path="/produto" component={CadastroProduto} />
+            <RoutesPrivate path="/perfil" component={Perfil} />
+            <RoutesPrivate path="/estoque" component={Estoque} />
         </Switch>
     );
 }

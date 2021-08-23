@@ -41,6 +41,7 @@ routes.post('/lanchonete', upload.single('image'), GerenteLanchoneteController.s
 
 // CRUD das vendas
 routes.get('/vendas/:id', VendaController.index);
+routes.get('/vendas/:id/:startDate/:endDate', VendaController.relatorio);
 routes.get('/vendas/:id/meusPedidos', VendaController.pedidos);
 routes.put('/vendas/:id/confirmar', VendaController.update_status);
 routes.post('/vendas', VendaController.store);

@@ -15,6 +15,7 @@ import Estoque from './pages/Estoque';
 import MeusPedidos from './pages/MeusPedidos';
 import GerenciarPedidos from './pages/GerenciarPedidos';
 import Mapa from './pages/Mapa';
+import RelatorioVendas from './pages/RelatorioVendas';
 import RoutesPrivate from './components/Routes/Private/Private';
 
 function Routes() {
@@ -30,6 +31,7 @@ function Routes() {
             <RoutesPrivate path="/produto" component={CadastroProduto} />
             <RoutesPrivate path="/perfil" component={Perfil} />
             <RoutesPrivate path="/estoque" component={Estoque} />
+            <RoutesPrivate path="/relatorioVendas" component={RelatorioVendas} />
             <RoutesPrivate path="/meusPedidos" component={MeusPedidos} />
             <RoutesPrivate path="/gerenciarPedidos" component={GerenciarPedidos} />
         </Switch>

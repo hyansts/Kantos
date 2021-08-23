@@ -64,8 +64,10 @@ module.exports = {
     },
 
     async filtrarPorCategoria(req, res) {
-        const { categorias } = req.body;
-        const produtos = await Produto.find({ categorias: { $all: categorias } });
+        const { categoria } = req.body;
+        let produtos; 
+        if(categoria) produtos= await Produto.find({ categorias: categoria });
+        else produtos = await Produto.find();
         return res.json(produtos);
     },
 

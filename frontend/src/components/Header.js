@@ -53,8 +53,8 @@ class Header extends Component {
         <NavDropdown key="minhaLanchonete" title="Minha Lanchonete" id="collasible-nav-dropdown">
           <NavDropdown.Item href="/gerenciarPedidos">Gerenciar pedidos</NavDropdown.Item>
           <NavDropdown.Item href="/estoque">Meu estoque</NavDropdown.Item>
-          <NavDropdown.Item href="produto">Cadastrar produto</NavDropdown.Item>
-          <NavDropdown.Item href="/">Relatório de vendas</NavDropdown.Item>
+          <NavDropdown.Item href="/produto">Cadastrar produto</NavDropdown.Item>
+          <NavDropdown.Item href="/relatorioVendas">Relatório de vendas</NavDropdown.Item>
         </NavDropdown>
       }
     } else {
@@ -62,7 +62,7 @@ class Header extends Component {
     }
 
     return (
-      <header id="main-header">
+      <header id="main-header" className="no-print">
           <Navbar collapseOnSelect expand="lg" bg="light" fixed="top" className="shadow p-3 mb-5 bg-white rounded">
               <Navbar.Brand href="/" className="mx-3">
                   <img id="logo" src={logo} alt="Kantos"/>

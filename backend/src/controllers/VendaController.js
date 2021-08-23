@@ -10,6 +10,19 @@ module.exports = {
         return res.json(vendas);
     },
 
+    //busca relatorio de vendas de uma lanchonete
+    async relatorio(req, res) {
+        //recupera as vendas e popula o campo cliente com seus nomes
+        const vendas = await Venda.find({ 
+            nome_lanchonete: req.params.id,
+            'createdAt': {
+                $gt: req.params.startDate,
+                $lt: req.params.endDate
+            }
+         }).populate('produtos.produto').populate('cliente', 'nome').sort({ 'createdAt': 'desc' });
+        return res.json(vendas);
+    },
+
     //busca todas os peridos de um cliente
     async pedidos(req, res) {
         const vendas = await Venda.find({ cliente: req.params.id })

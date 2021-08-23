@@ -31,6 +31,9 @@ class MeusPedidos extends Component {
         if (status === 'Finalizado') {
             return otherClasses + ' text-success'
         }
+        if (status === 'Cancelado') {
+            return otherClasses + ' text-danger'
+        }
         return otherClasses;
     }
 
@@ -46,17 +49,16 @@ class MeusPedidos extends Component {
         this.setState({ quantidade: qtd });
     }
 
-    handleSubmit = async (idx, e) => {
-        e.preventDefault();
+    handleSubmit = async (id, status, idx) => {
         try {
             const data = new URLSearchParams();
-            data.append('quantidade', this.state.quantidade[idx]);
-            const estoque = await api.put('/produtos/'+this.state.feed[idx]._id+'/estoque', data);
-            let newFeed = this.state.feed.slice();
-            newFeed[idx] = estoque.data;
-            this.setState({feed: newFeed});
-        } catch(e) {
-            this.setState({erro: 'Algo deu errado!'});
+            data.append('pedido_status', status);
+            const venda = await api.put('/vendas/' + id + '/confirmar', data);
+            let _feed = this.state.feed.slice();
+            _feed[idx] = venda.data;
+            this.setState({ feed: _feed });
+        } catch (e) {
+            this.setState({ erro: 'Algo deu errado!' });
         }
     }
 
@@ -112,7 +114,8 @@ class MeusPedidos extends Component {
                                                 </div>
                                                 <div className="d-flex justify-content-end col-md-6 form-group">
                                                     {pedido.pedido_status==='Esperando Confirmação' &&
-                                                    <a href="#" className="btn text-center text-danger">Cancelar</a>}
+                                                    <button onClick={(e) => this.handleSubmit(pedido._id, 'Cancelado', idx)}
+                                                    className="btn text-center text-danger">Cancelar</button>}
                                                     <div className={this.corStatus(pedido.pedido_status)} style={{pointerEvents:'none'}}>{pedido.pedido_status}</div>
                                                 </div>
                                             </li>

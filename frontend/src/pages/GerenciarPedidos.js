@@ -31,7 +31,17 @@ class GerenciarPedidos extends Component {
         if (status === 'Finalizado') {
             return otherClasses+' btn-dark'
         }
+        if(status === 'Cancelado') {
+            return otherClasses + ' btn-danger'
+        }
         return otherClasses;
+    }
+
+    hideCancel = (status) => {
+        if(status === 'Cancelado' || status === 'Finalizado'){
+            return false;
+        }
+        return true;
     }
 
     solveStatus = (status) => {
@@ -41,7 +51,7 @@ class GerenciarPedidos extends Component {
         if (status === 'Confirmado') {
             return 'Finalizado'
         }
-        return 'Finalizado';
+        return 'Cancelado';
     }
 
     formaPagamento = (forma, troco) => {
@@ -146,9 +156,12 @@ class GerenciarPedidos extends Component {
                                                     </div>
                                                 </div>
                                                 <div className="col-md-4">
-                                                    {pedido.pedido_status !== 'Finalizado' &&
+                                                    {this.hideCancel(pedido.pedido_status) &&
                                                     <div className="d-flex justify-content-end form-group">
-                                                        <button href="#" className="btn text-danger text-center">Cancelar</button>
+                                                        <button href="#" className="btn text-danger text-center"
+                                                            onClick={(e) => this.handleSubmit(pedido._id, 'Cancelado', idx)}>
+                                                            Cancelar
+                                                        </button>
                                                         <button className="btn btn-success mx-3"
                                                             onClick={(e) => this.handleSubmit(pedido._id, pedido.pedido_status, idx)}>
                                                             Confirmar

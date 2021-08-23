@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { Modal, Button } from 'react-bootstrap';
+import LoginContext from '../components/Context';
 import Header from '../components/Header';
 
 import '../services/api';
 
 import './css/styles.css';
-import pici from '../assets/img/banner1.png';
+import pici from '../assets/img/bannerNovo.png';
 import cart from '../assets/img/cart-arrow-down-solid.svg';
 import cartBlack from '../assets/img/cart-arrow-down-solid-black.svg';
 import trash from '../assets/img/trash-alt-solid.svg';
@@ -24,12 +25,46 @@ class Lanchonete extends Component {
         horario: '',
         para_entrega: 'false',
         forma_de_pagamento: 'dinheiro',
+        token: this.context.token,
     };
+
+    static contextType = LoginContext;
 
     async componentDidMount(){
         const id = this.props.location.state.lanchonete;
         const response = await api.get('produtos/'+id+'/lanchonete');
         this.setState({feed: response.data});
+    }
+
+    finalizarCompra = async () => {
+
+        let _carrinho= this.state.carrinho.slice();
+        let produtos = [];
+        _carrinho.forEach( (item)=> {
+            const produtoId = this.state.feed[item.idx]._id;
+            produtos.push({produto: produtoId, quantidade: item.qtd});
+        } );
+
+        let total = 0;
+        this.state.carrinho.map(pr => {
+            total += this.state.feed[pr.idx].preco * pr.qtd
+        });
+
+        let para_entrega_bool = this.state.para_entrega == 'false' ? false : true;
+        
+        const infoVenda = {
+            produtos: produtos,
+            cliente: this.state.token,
+            precoTotal: total,
+            forma_de_pagamento: this.state.forma_de_pagamento,
+            troco: this.state.troco,
+            nome_lanchonete: this.state.feed[0].vendedor.nome_lanchonete,
+            endereco_de_entrega: this.state.endereco,
+            horario_de_entrega: this.state.horario,
+            para_entrega: para_entrega_bool
+        };
+        await api.post('/vendas', infoVenda);
+        this.props.history.push('/meusPedidos');
     }
 
     handleChange = e => {
@@ -119,12 +154,9 @@ class Lanchonete extends Component {
                         <li data-target="#mainSlider" data-slide-to="2"></li>
                     </ol>
                     <div className="carousel-inner">
-                        <div className="carousel-item active">
-                            <img src={pici} className="d-block w-100" alt="Projetos de e-commerce" />
-                            <div className="carousel-caption d-md-block">
-                                <h2>Seu Pedido de lanche na UFC, do seu jeito, na hora certa, em qualquer lugar do Campus do Pici!</h2>
-                                <p>V</p>
-                            </div>
+                        <div className="carousel-item active ">
+                            <img src={pici} className="d-block mx-auto" 
+                            alt="Projetos de e-commerce"/>
                         </div>
                     </div>
                 </div>
@@ -142,7 +174,7 @@ class Lanchonete extends Component {
                             <div className="card mb-5">
                                 <img src={"http://localhost:3333/files/" + pr.imagem} className="fotos"/>
                                 <div className="card-body">
-                                    <h4 className="card-title mb-3">{pr.nome}</h4>
+                                    <h5 className="card-title mb-3">{pr.nome}</h5>
                                         <h2>R$ {pr.preco.toLocaleString('pt-br',
                                             { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</h2><h6>cada</h6>
                                         
@@ -309,7 +341,7 @@ class Lanchonete extends Component {
                         Comprar
                     </Button>
                     || this.state.carrinho.length>0 && this.state.telaComprar &&
-                    <Button variant="warning text-black" >
+                    <Button type="submit" variant="warning text-black" onClick={this.finalizarCompra}>
                         Finalizar Compra
                     </Button>
                     }
@@ -320,4 +352,4 @@ class Lanchonete extends Component {
     }
 }
 
-export default Lanchonete;
+export default withRouter(Lanchonete);

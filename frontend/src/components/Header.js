@@ -45,13 +45,13 @@ class Header extends Component {
       perfil = 
       <NavDropdown key="perfilNome" 
       title={this.state.usuario.nome.split(' ')[0]} >
-        <NavDropdown.Item href="/">Meus pedidos</NavDropdown.Item>
+        <NavDropdown.Item href="/meusPedidos">Meus pedidos</NavDropdown.Item>
         <NavDropdown.Item href="/perfil">Meu perfil</NavDropdown.Item>
       </NavDropdown>
       if(this.state.usuario?.tipo === 'gerente') {
         menuLanchonete = 
         <NavDropdown key="minhaLanchonete" title="Minha Lanchonete" id="collasible-nav-dropdown">
-          <NavDropdown.Item href="/">Gerenciar pedidos</NavDropdown.Item>
+          <NavDropdown.Item href="/gerenciarPedidos">Gerenciar pedidos</NavDropdown.Item>
           <NavDropdown.Item href="/estoque">Meu estoque</NavDropdown.Item>
           <NavDropdown.Item href="produto">Cadastrar produto</NavDropdown.Item>
           <NavDropdown.Item href="/">Relatório de vendas</NavDropdown.Item>
@@ -72,7 +72,7 @@ class Header extends Component {
               <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
                 <Nav>
                   <Nav.Link href="/" id="home-menu">Início</Nav.Link>
-                  <Nav.Link href="mapa">Mapa</Nav.Link>
+                  <Nav.Link href="/mapa">Mapa</Nav.Link>
                   {perfil}
                   {menuLanchonete}
                   {logBtn}

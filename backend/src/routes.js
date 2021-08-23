@@ -40,7 +40,8 @@ routes.put('/lanchonete/:id/editar', GerenteLanchoneteController.edit);
 routes.post('/lanchonete', upload.single('image'), GerenteLanchoneteController.store);
 
 // CRUD das vendas
-routes.get('/vendas', VendaController.index);
+routes.get('/vendas/:id', VendaController.index);
+routes.get('/vendas/:id/meusPedidos', VendaController.pedidos);
 routes.put('/vendas/:id/confirmar', VendaController.update_status);
 routes.post('/vendas', VendaController.store);
 routes.delete('/vendas/:id/cancelar', VendaController.cancel);

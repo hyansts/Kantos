@@ -12,6 +12,9 @@ import CadastroLanchonete from './pages/CadastroLanchonete';
 import CadastroProduto from './pages/CadastroProduto';
 import Perfil from './pages/Perfil';
 import Estoque from './pages/Estoque';
+import MeusPedidos from './pages/MeusPedidos';
+import GerenciarPedidos from './pages/GerenciarPedidos';
+import Mapa from './pages/Mapa';
 import RoutesPrivate from './components/Routes/Private/Private';
 
 function Routes() {
@@ -23,9 +26,12 @@ function Routes() {
             <Route path="/cadastro" component={Cadastro} />
             <Route path="/loginLanchonete" component={LoginLanchonete} />
             <Route path="/cadastroLanchonete" component={CadastroLanchonete} />
+            <Route path="/mapa" component={Mapa} />
             <RoutesPrivate path="/produto" component={CadastroProduto} />
             <RoutesPrivate path="/perfil" component={Perfil} />
             <RoutesPrivate path="/estoque" component={Estoque} />
+            <RoutesPrivate path="/meusPedidos" component={MeusPedidos} />
+            <RoutesPrivate path="/gerenciarPedidos" component={GerenciarPedidos} />
         </Switch>
     );
 }

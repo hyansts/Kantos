@@ -3,7 +3,8 @@ Aplicação Kantos: Seu pedido de lanche na UFC, do seu jeito, na hora certa, em
 Versões:
   Node: v14.17.5
   React: 17.0.1
-
+  Yarn: 1.19.1
+  
 Scripts:
   Backend: yarn dev
   Frontend: yarn start
